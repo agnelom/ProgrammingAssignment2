@@ -1,9 +1,13 @@
 ## Put comments here that give an overall description of what your
 ## functions do
+## This file has tow functions which demonstrate the use of lexiscal scoping
+## The function makeCacheMatrix create as special matrix and allows for its 
+## inverse to be stored into cache using the lexical scoping techniques
+
 
 ## Write a short comment describing this function
-## this function creates a matrix that is used by the cacheSolve and and provides a mechanism 
-## to cache the inverse of the matrix and provide related function set and get data
+## this function creates a matrix that is used by the cacheSolve function and provides a mechanism 
+## to cache the inverse of the matrix and provide related methods to set and get data
 
 makeCacheMatrix <- function(x = matrix()) {
   mInv <- NULL
@@ -18,7 +22,10 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## The cacheSolve function takes as input what is output by makeCacheMatrix
+## this function is responsible for calculating the inverse of the special matrix create by makeCacheMatrix
+## It only calculates the invers if it does not already fine the inverse in cache. If it calculates the invers then
+## in also puts the value into the cache using the setInv function in makeCacheMatrix.
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
