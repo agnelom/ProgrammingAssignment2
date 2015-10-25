@@ -8,10 +8,10 @@
 makeCacheMatrix <- function(x = matrix()) {
   mInv <- NULL
   set <- function(y) {
-      envX <<- y
+      x <<- y
       mInv <<- NULL
   }
-  get <- function() envX
+  get <- function() x
   setInv <- function(inv) mInv <<- inv
   getInv <- function() mInv
   list(set = set, get = get, setInv = setInv, getInv = getInv)
@@ -27,9 +27,13 @@ cacheSolve <- function(x, ...) {
     print("Getting inverse from Cache")
     return(nInv)
   }
-##  data <- x$get()
-  data <- m
-  nInv <- solve(data)
+  data <- x$get()
+  if (nrow(data)==ncol(data)){
+    nInv <- solve(data)
+  }
+  else {
+    print("Only Square matrix supported")
+  }
   x$setInv(nInv)
   nInv
 }
